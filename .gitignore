@@ -1,0 +1,8 @@
+DeployHeroku.sln
+.vs
+
+DeployHeroku/Properties
+DeployHeroku/obj
+DeployHeroku/bin
+
+.dockerignore
