@@ -7,10 +7,10 @@ COPY ["DeployHeroku/DeployHeroku.csproj", "DeployHeroku/"]
 RUN dotnet restore "DeployHeroku/DeployHeroku.csproj"
 COPY . .
 WORKDIR "/src/DeployHeroku"
-RUN dotnet build "DeployHeroku/DeployHeroku.csproj" -c Release -o /app/build
+RUN dotnet build "DeployHeroku.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "DeployHeroku/DeployHeroku.csproj" -c Release -o /app/publish
+RUN dotnet publish "DeployHeroku.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
