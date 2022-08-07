@@ -43,3 +43,4 @@ jobs:
           heroku_app_name: "herokudeploytestci"
           heroku_email: "otaviovb.developer@gmail.com"
           usedocker: true
+          dockerfile: DeployHeroku/Dockerfile
