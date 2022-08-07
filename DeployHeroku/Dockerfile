@@ -1,12 +1,14 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["DeployHeroku.csproj", "DeployHeroku/"]
-RUN dotnet restore "DeployHeroku.csproj"
+COPY ["DeployHeroku.csproj", "."]
+RUN dotnet restore "./DeployHeroku.csproj"
 COPY . .
-WORKDIR "/src/DeployHeroku"
+WORKDIR "/src/."
 RUN dotnet build "DeployHeroku.csproj" -c Release -o /app/build
 
 FROM build AS publish
