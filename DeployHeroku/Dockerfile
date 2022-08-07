@@ -4,7 +4,7 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["DeployHeroku/DeployHeroku.csproj", "DeployHeroku/"]
-RUN dotnet restore "DeployHeroku/DeployHeroku.csproj"
+RUN dotnet restore "DeployHeroku.csproj"
 COPY . .
 WORKDIR "/src/DeployHeroku"
 RUN dotnet build "DeployHeroku.csproj" -c Release -o /app/build
